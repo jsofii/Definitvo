@@ -10,5 +10,28 @@ package sistemasdefinitivo;
  * @author USER
  */
 public class Receta {
+    private String medicamento;
+    private int concentracion;
+
+    public String getMedicamento() {
+        return medicamento;
+    }
+
+    public void setMedicamento(String medicamento) {
+        this.medicamento = medicamento;
+    }
+
+    public int getConcentracion() {
+        return concentracion;
+    }
+
+    public void setConcentracion(int concentracion) {
+        this.concentracion = concentracion;
+    }
     
+    public Receta(){
+        this.medicamento="Paracetamol";
+        this.concentracion=500;
+    }
+  
 }
