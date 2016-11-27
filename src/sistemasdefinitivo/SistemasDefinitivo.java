@@ -18,6 +18,8 @@ public class SistemasDefinitivo {
      */
     public static void main(String[] args) {
          Hospital h=new Hospital();
+         Paciente p= new Paciente();
+         
         Scanner sc=new Scanner(System.in);
         int inicio;
         do{
@@ -48,6 +50,19 @@ public class SistemasDefinitivo {
                             case 1:
                                 System.out.println("Usted eligio funcionario");
                                 System.out.print("Ingrese su usuario (C.I.): ");
+                                System.out.println("Ingrese lo que desea hacer");
+                                System.out.println("Ingresar datos de paciente: 1");
+                                System.out.println("Ingresar datos de un médico 2");
+                                System.out.println("Buscar datos paciente: 3 ");
+                                System.out.println("Buscar datos medico:4");
+                                System.out.println("Buscar datos hospital:5");
+                                int aux;
+                                aux=sc.nextInt();
+                                switch (aux){
+                                    case 1:
+                                        
+                                        break;
+                                }
                                 
                                 break;
                             case 2:
