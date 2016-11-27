@@ -23,6 +23,11 @@ public class Paciente extends Persona{
         return nombre;
     }
 
+    public Paciente(String Nombre, String Diagnostico) {
+        this.nombre = Nombre;
+        this.diagnostico = Diagnostico;
+    }
+
     @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;

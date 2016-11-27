@@ -18,7 +18,9 @@ public class SistemasDefinitivo {
      */
     public static void main(String[] args) {
          Hospital h=new Hospital();
-         Paciente p= new Paciente();
+         Paciente[] p= new Paciente[100];
+         p[1]=new Paciente ("sofi", "hosld");
+         int i=0;
          
         Scanner sc=new Scanner(System.in);
         int inicio;
@@ -39,6 +41,7 @@ public class SistemasDefinitivo {
                 case 1:
                     int usuario;
                     do{
+                        Scanner aux=new Scanner(System.in);
                         System.out.println("¿Qué tipo de usuario es?");
                         System.out.println("1. Funcionario");
                         System.out.println("2. Medico");
@@ -56,10 +59,26 @@ public class SistemasDefinitivo {
                                 System.out.println("Buscar datos paciente: 3 ");
                                 System.out.println("Buscar datos medico:4");
                                 System.out.println("Buscar datos hospital:5");
-                                int aux;
-                                aux=sc.nextInt();
-                                switch (aux){
+                                int aux1;
+                                aux1=sc.nextInt();
+                                switch (aux1){
                                     case 1:
+                                        
+                                        System.out.println("ingrese el nombre");
+                                        String Nombre = aux.nextLine();
+                                        System.out.println("ingrese el diagnostico");
+                                        String Diagnostico= aux.nextLine();
+                                       // p[1]=new Paciente(Nombre,Diagnostico);
+                                        System.out.println("lkdjfklasjfkljsdlkfdjlfjlsjlksdjlfk");
+                                        p[i]=new Paciente(Nombre, Diagnostico);
+                                        System.out.println(p[i].getNombre() +""+ p[i].getDiagnostico());
+                                       
+                                        
+                                        //System.out.println(p[1].getNombre());
+                                        
+                                        
+                                                
+                                       
                                         
                                         break;
                                 }
@@ -94,6 +113,7 @@ public class SistemasDefinitivo {
                 case 3:
                     System.out.println("Gracias por usar nuestro servicio");
                     break;
+                
             }
         }while(inicio !=3);
     }
