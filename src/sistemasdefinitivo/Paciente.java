@@ -11,7 +11,7 @@ package sistemasdefinitivo;
  */
 public class Paciente extends Persona{
     private String nombre;
-     private String diagnostico;
+     private int diagnostico;
      private Medico medico;
      private Turno turno;
      private Seguro seguro;
@@ -23,21 +23,30 @@ public class Paciente extends Persona{
         return nombre;
     }
 
-    public Paciente(String Nombre, String Diagnostico) {
-        this.nombre = Nombre;
-        this.diagnostico = Diagnostico;
+    public Paciente(String nombre, int diagnostico, Medico medico, Turno turno, Seguro seguro, Receta receta, double cuenta) {
+    
+        this.nombre = nombre;
+        this.diagnostico = diagnostico;
+        this.medico = medico;
+        this.turno = turno;
+        this.seguro = seguro;
+        this.receta = receta;
+        this.cuenta = cuenta;
     }
+
+    
+   
 
     @Override
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getDiagnostico() {
+    public int getDiagnostico() {
         return diagnostico;
     }
 
-    public void setDiagnostico(String diagnostico) {
+    public void setDiagnostico(int diagnostico) {
         this.diagnostico = diagnostico;
     }
 

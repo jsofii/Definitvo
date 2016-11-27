@@ -33,5 +33,11 @@ public class Receta {
         this.medicamento="Paracetamol";
         this.concentracion=500;
     }
+
+    public Receta(String Medicamento, int Concentracion) {
+        this.medicamento = Medicamento;
+        this.concentracion = Concentracion;
+    }
+    
   
 }

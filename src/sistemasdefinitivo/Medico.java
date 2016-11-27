@@ -15,9 +15,17 @@ public class Medico extends Persona {
     public String getEspecialidad() {
         return especialidad;
     }
+    
+    public Medico(String Especialidad, String Nombre) {
+        super(Nombre);
+        this.especialidad = Especialidad;
+    }
 
-    public void setEspecialidad(String especialidad) {
+    public Medico(String especialidad) {
         this.especialidad = especialidad;
     }
+
+
+   
     
 }
