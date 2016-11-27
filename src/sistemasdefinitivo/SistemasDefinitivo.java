@@ -53,6 +53,7 @@ public class SistemasDefinitivo {
                             case 1:
                                 System.out.println("Usted eligio funcionario");
                                 System.out.print("Ingrese su usuario (C.I.): ");
+                                String Cedula = aux.nextLine();
                                 System.out.println("Ingrese lo que desea hacer");
                                 System.out.println("Ingresar datos de paciente: 1");
                                 System.out.println("Ingresar datos de un médico 2");
@@ -76,11 +77,24 @@ public class SistemasDefinitivo {
                                         
                                         //System.out.println(p[1].getNombre());
                                         
-                                        
-                                                
-                                       
-                                        
+                                    break;
+                                    case 2: 
+                                        System.out.println("ingrese el nombre del medico");
+                                        String NombreMed = aux.nextLine();
+                                        System.out.println("ingrese la especialidad");
+                                        String Especialidad= aux.nextLine();
                                         break;
+                                        
+                                    case 3:
+                                        System.out.println("que datos del paciente desea buscar");
+                                        break;
+                                    case 4:
+                                        System.out.println("que datos del medico desea buscar");
+                                        break;
+                                    case 5:
+                                        System.out.println("que datos del hospital  desea buscar");
+                                        break;
+                                        
                                 }
                                 
                                 break;
