@@ -71,7 +71,7 @@ public class SistemasDefinitivo {
                                        // p[1]=new Paciente(Nombre,Diagnostico);
                                         System.out.println("lkdjfklasjfkljsdlkfdjlfjlsjlksdjlfk");
                                         p[i]=new Paciente(Nombre, Diagnostico);
-                                        System.out.println(p[i].getNombre() +""+ p[i].getDiagnostico());
+                                        System.out.println(p[i].getNombre() +"djldkjdlkj"+ p[i].getDiagnostico());
                                        
                                         
                                         //System.out.println(p[1].getNombre());
@@ -115,6 +115,7 @@ public class SistemasDefinitivo {
                     break;
                 
             }
+            i++;
         }while(inicio !=3);
     }
         // TODO code application logic here
