@@ -19,6 +19,11 @@ public class SistemasDefinitivo {
     public static void main(String[] args) {
          Hospital h=new Hospital();
          Paciente[] p= new Paciente[100];
+          java.util.Date fecha = new Date();
+          java.util.Date Fecha = new Date();
+          
+           System.out.println(Fecha);
+        
           
          int num_medicos=300;
          Medico[] m= new Medico[num_medicos];
@@ -29,6 +34,10 @@ public class SistemasDefinitivo {
          m[5]=new Medico ("Bryan Utreras", " cirunan plastico");
          m[6]=new Medico ("Lorena Carrion","cirujana plastica");
          int n=0;
+         System.out.println(m[2].getNombre() + m[2].getEspecialidad());
+         
+       
+         Turno[] turno=new Turno[1000];
         
          
          
@@ -50,13 +59,16 @@ public class SistemasDefinitivo {
             System.out.println("Encuentrenos en: "+h.getDireccion().toString());
             inicio=sc.nextInt();
             sc.nextLine();
+             int j=0;
             switch(inicio){
                 default:
                     System.out.println("Por favor, seleccione una opción válida");
                     break;
                 case 1:
                     int usuario;
+                    
                     do{
+                         
                         Scanner aux=new Scanner(System.in);
                         System.out.println("¿Qué tipo de usuario es?");
                         System.out.println("1. Funcionario");
@@ -79,11 +91,13 @@ public class SistemasDefinitivo {
                                 int aux1;
                                 aux1=sc.nextInt();
                                 Turno[] t= new Turno[n];
+                                
                                 switch (aux1){
                                     case 1:
                                         
                                         System.out.println("ingrese el nombre");
                                         String Nombre = aux.nextLine();
+                                        
                                         System.out.println("ingrese el diagnostico");
                                         System.out.println(" Si el diganostico del paciente es :");
                                         System.out.println("Critico: 3");
@@ -91,36 +105,64 @@ public class SistemasDefinitivo {
                                         System.out.println("leve:1");
                                         System.out.println("Sano:0");
                                         int  Diagnostico= aux.nextInt();
+                                       
                                         switch ( Diagnostico){
                                             
                                             case 3:
-                                                System.out.println("El estado del paciente es critico, es necesario asignarle una habitacion y un cirujano general");
-                                                p[i].setMedico(m[1]);
+                                                System.out.println("El estado del paciente es critico, es necesario asignarle una habitacion  en el piso 3 y un cirujano general");
+                                                int Estado=3;
+                                                System.out.println("El paciente debe se internado, el costo para que pueda ingresar es de 100 dólares");
+                                                double Pag=100;
+                                                
+                                                
+                                                
+                                                turno[i]=new Turno(100, Fecha );
+                                                p[i]=new Paciente (Nombre, Estado ,m[1], turno[i], Pag  );
+                                                System.out.println("A continuacion le mostramos los datos del paciente");
+                                                System.out.println("el nombre del paciente es");
+                                                System.out.println(p[i].getNombre() );
+                                                System.out.println("su diagnostico es "+p[i].getDiagnostico());
+                                                System.out.println("el medico asignado es " + p[i].getMedico().getEspecialidad());
+                                                System.out.println("la especialidad del medico es " +p[i].getMedico().getNombre()  );
+                                             
+                                                System.out.println("El costo y la fecha de ingreso es :");
+                                                System.out.println(p[i].getTurno().toString());
+                                                System.out.println("el paciente tiene un turno prioritario debido a su diagnostico");
+                                                
+                                                
+                                                
+                                                break;
+                                                
                                             case 2:
                                                 System.out.println("El estado el paciente es grave, es necesario asiganarle un cirujano");
                                                 p[i].setMedico(m[2]);
+                                                break;
                                             case 1:
                                                 System.out.println("El estado del paciente es leve, es necesario asignarle un medico general");
                                                 System.out.println("Si el paciente requiere una sutura presione '1' en caso contrario presion '2'");
-                                                int cont1= aux.nextInt();
-                                               switch ( cont1){
+                                                int Caso= aux.nextInt();
+                                                
+                                               switch (Caso){
                                                    case 1:
                                                        System.out.println(" Debido a que el paciente requiere una sutura, se le asignara un cirujano plastico y un turno para que sea atendido");
                                                        p[i].setMedico(m[5]);
-                                                       p[i].setTurno(t[1]);
+                                                       p[i].setTurno(t[n]);
                                                    case 2:
                                                        System.out.println(" Debido a que el paciente no requiere, se le asignara un medico general");
+                                                       p[i].setMedico(m[3]);
+                                                       p[i].setTurno(t[n]);
+                                                       
                                                        
                                                                
                                                        
-                                                           }
+                                                           
                                             
-                                                
+                                               }
+                                        
+                                
                                         }
                                        // p[1]=new Paciente(Nombre,Diagnostico);
-                                        System.out.println("lkdjfklasjfkljsdlkfdjlfjlsjlksdjlfk");
-                                        //p[i]=new Paciente(Nombre, Diagnostico);
-                                        System.out.println(p[i].getNombre() +"djldkjdlkj"+ p[i].getDiagnostico());
+                                       
                                        
                                         
                                         //System.out.println(p[1].getNombre());
@@ -181,6 +223,7 @@ public class SistemasDefinitivo {
             n++;
         }while(inicio !=3);
     }
+
         // TODO code application logic here
     }
     
