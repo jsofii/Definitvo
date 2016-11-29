@@ -13,12 +13,6 @@ public class Piso {
     private int numero;
     private Hospital hospital;
 
-    public Piso(int numero) {
-        this.numero = numero;
-        this.hospital = hospital;
-    }
-    
-    
     public int getNumero() {
         return numero;
     }
@@ -35,8 +29,8 @@ public class Piso {
         this.hospital = hospital;
     }
  
-    public Piso(Hospital hospital){
-        this.numero=1;
+    public Piso(int numero,Hospital hospital){
+        this.numero=numero;
         this.hospital=hospital;
     }
 }
