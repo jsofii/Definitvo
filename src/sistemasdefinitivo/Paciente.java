@@ -10,15 +10,15 @@ package sistemasdefinitivo;
  * @author USER
  */
 public class Paciente extends Persona{
-    private String nombre;
      private String diagnostico;
      private Medico medico;
      private Turno turno;
      private int  seguro;
-     private String receta;
+     private Receta receta;
      private  float cuenta;
      private  int piso;
      private String alergias;
+    private int estado;
 
     
 
@@ -79,7 +79,6 @@ public class Paciente extends Persona{
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
-
    
     public Medico getMedico() {
         return medico;
@@ -90,8 +89,7 @@ public class Paciente extends Persona{
     }
 
     public Turno getTurno() {
-        return turno;
-    }
+        return turno;    }
 
     public void setTurno(Turno turno) {
         this.turno = turno;
@@ -105,15 +103,52 @@ public class Paciente extends Persona{
         this.seguro = seguro;
     }
 
-    public String getReceta() {
+    public Receta getReceta() {
         return receta;
     }
 
-    public void setReceta(String receta) {
+    public void setReceta(Receta receta) {
         this.receta = receta;
     }
 
-   
+   public String getEstado(){
+        String estado1="";
+        switch(this.estado){
+            case 0:
+                estado1="Sano";
+                break;
+            case 1:
+                estado1="Leve";
+                break;
+            case 2:
+                estado1="Grave";
+                break;
+            case 3:
+                estado1="Critico";
+                break;
+        }
+        return estado1;
+    }
+    
+    public void setEstado(int estado){
+        String estado1="";
+        switch(this.estado){
+            case 0:
+                estado1="Sano";
+                break;
+            case 1:
+                estado1="Leve";
+                break;
+            case 2:
+                estado1="Grave";
+                break;
+            case 3:
+                estado1="Critico";
+                break;
+        }
+        this.estado=estado1;
+    }
+    
 
    
 
