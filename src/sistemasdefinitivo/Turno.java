@@ -5,6 +5,9 @@
  */
 package sistemasdefinitivo;
 
+import java.util.Date;
+import java.util.Scanner;
+
 /**
  *
  * @author USER
@@ -14,6 +17,15 @@ public class Turno {
     private int dia;
     private int mes;
     private int año;
+    private Date fecha;
+    Scanner sc=new Scanner(System.in);
+
+    public Turno(double pago, Date fecha) {
+        this.pago = pago;
+        this.fecha = fecha;
+    }
+    
+    
 
     public double getPago() {
         return pago;
@@ -91,6 +103,10 @@ public class Turno {
         this.dia=1;
         this.mes=1;
         this.año=2017;
+    }
+    
+    public String toString(){
+        return "la fecha asignada para el turno es"+fecha;
     }
     
 }

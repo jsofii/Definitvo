@@ -23,5 +23,10 @@ public class Seguro {
     public Seguro(){
         this.cubierto=0.80;
     }
+
+    public Seguro(double cubierto) {
+        this.cubierto = cubierto;
+    }
+    
     
 }

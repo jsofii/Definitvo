@@ -11,26 +11,40 @@ package sistemasdefinitivo;
  */
 public class Paciente extends Persona{
     private String nombre;
-     private int diagnostico;
+     private String diagnostico;
      private Medico medico;
      private Turno turno;
-     private Seguro seguro;
+     private int  seguro;
      private Receta receta;
-     private double cuenta;
+     private  float cuenta;
+     private  int piso;
+
+   
+
+    public int getPiso() {
+        return piso;
+    }
+
+    public void setPiso(int piso) {
+        this.piso = piso;
+    }
+
+    
 
     @Override
     public String getNombre() {
         return nombre;
     }
 
-    public Paciente(String nombre, int diagnostico, Medico medico, Turno turno, Seguro seguro, Receta receta, double cuenta) {
+    public Paciente(String nombre, String diagnostico, Medico medico, Turno turno, int piso,  int seguro, float cuenta) {
     
         this.nombre = nombre;
         this.diagnostico = diagnostico;
         this.medico = medico;
         this.turno = turno;
-        this.seguro = seguro;
-        this.receta = receta;
+        this.seguro=seguro;
+        this.piso=piso;
+    
         this.cuenta = cuenta;
     }
 
@@ -42,14 +56,15 @@ public class Paciente extends Persona{
         this.nombre = nombre;
     }
 
-    public int getDiagnostico() {
+    public String getDiagnostico() {
         return diagnostico;
     }
 
-    public void setDiagnostico(int diagnostico) {
+    public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
 
+   
     public Medico getMedico() {
         return medico;
     }
@@ -66,13 +81,15 @@ public class Paciente extends Persona{
         this.turno = turno;
     }
 
-    public Seguro getSeguro() {
+    public int getSeguro() {
         return seguro;
     }
 
-    public void setSeguro(Seguro seguro) {
+    public void setSeguro(int seguro) {
         this.seguro = seguro;
     }
+
+   
 
     public Receta getReceta() {
         return receta;
@@ -82,11 +99,35 @@ public class Paciente extends Persona{
         this.receta = receta;
     }
 
-    public double getCuenta() {
+    public float getCuenta() {
         return cuenta;
     }
 
-    public void setCuenta(double cuenta) {
+    public void setCuenta(float cuenta) {
+        this.cuenta = cuenta;
+    }
+
+  
+
+    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno,int piso, int seguro, Receta receta, float cuenta, String nombre) {
+        super(Nombre);
+        this.nombre = nombre;
+        this.diagnostico = diagnostico;
+        this.medico = medico;
+        this.turno = turno;
+        this.seguro = seguro;
+        this.receta = receta;
+        this.cuenta = cuenta;
+        this.piso=piso;
+    }
+
+    public Paciente(String nombre, String diagnostico, Medico medico, Turno turno, int seguro, Receta receta, float cuenta) {
+        this.nombre = nombre;
+        this.diagnostico = diagnostico;
+        this.medico = medico;
+        this.turno = turno;
+        this.seguro = seguro;
+        this.receta = receta;
         this.cuenta = cuenta;
     }
     

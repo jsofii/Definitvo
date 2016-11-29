@@ -11,6 +11,27 @@ package sistemasdefinitivo;
  */
 public class Medico extends Persona {
     private String especialidad;
+    private int estado;
+    
+
+    public Medico(String nombre, String especialidad, int estado) {
+        super(nombre);
+        this.especialidad = especialidad;
+        this.estado = estado;
+    }
+
+    public Medico(String especialidad, int estado) {
+        this.especialidad = especialidad;
+        this.estado = estado;
+    }
+
+    public int getEstado() {
+        return estado;
+    }
+
+    public void setEstado(int estado) {
+        this.estado = estado;
+    }
 
     public String getEspecialidad() {
         return especialidad;

@@ -5,6 +5,7 @@
  */
 package sistemasdefinitivo;
 
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -19,22 +20,79 @@ public class SistemasDefinitivo {
     public static void main(String[] args) {
          Hospital h=new Hospital();
          Paciente[] p= new Paciente[100];
-          java.util.Date fecha = new Date();
+        
+         
+         
+          
           java.util.Date Fecha = new Date();
           
            System.out.println(Fecha);
         
           
          int num_medicos=300;
-         Medico[] m= new Medico[num_medicos];
-         m[1]=new Medico("Pablo Almeida","cirujano general");
-         m[2]=new Medico("Camila Moreira", "cirujana general");
-         m[3]=new Medico("Andrea Jimenez", "médico general");
-         m[4]=new Medico ("Camilo Guerrero", "medico general");
-         m[5]=new Medico ("Bryan Utreras", " cirunan plastico");
-         m[6]=new Medico ("Lorena Carrion","cirujana plastica");
+         Medico[] m_critico= new Medico[30];
+         Medico[] m_grave=new Medico[30];
+         Medico[] m_grave2=new Medico[30];
+         Medico [] m_leve= new Medico[100];
+         m_critico[0]=new Medico("Carlos Paez","cirujano general", 1);
+         m_critico[1]=new Medico("Camila Moreira", "cirujana general", 1);
+         m_critico[2]=new Medico("Andrea Jimenez", "cirujano general", 1);
+         m_critico[3]=new Medico ("Camilo Guerrero", "cirujano general", 1);
+         m_critico[4]=new Medico ("Bryan Utreras", " cirujano general", 1);
+         m_critico[5]=new Medico("Maria Lopez", "cirujana general", 1);
+         
+         m_grave[0]=new Medico ("Lorena Carrion","neurocirugía",1);
+          m_grave[1]=new Medico ("Lorena Albuja","neurocirugía",1);
+           m_grave[2]=new Medico ("Alvaro Rueda","neurocirugía",1);
+            m_grave[3]=new Medico ("Camilo Echeverria","neurocirugía",1);
+             m_grave[4]=new Medico ("Javier Aguirre","neurocirugía");
+         
+     
+       
+             
+             
+        m_grave2[0]=new Medico(" Patricia Alvarado", "cirujana general", 1);
+        m_grave2[1]=new Medico(" Patricia Alvarado", "cirujana general", 1);
+        m_grave2[2]=new Medico(" Patricia Alvarado", "cirujana general", 1);
+        m_grave2[3]=new Medico(" Patricia Alvarado", "cirujana general", 1);
+        m_grave2[4]=new Medico(" Patricia Alvarado", "cirujana general", 1);
+        
+        m_leve[0]=new Medico("Juan Ulloa", " medico general");
+            m_leve[1]=new Medico("Juan Jimenez", " medico general");
+                m_leve[2]=new Medico("Sebastian Jimenez", " medico general");
+                    m_leve[3]=new Medico("Andrea Andrade", " medico general");
+                        m_leve[4]=new Medico("Pepe Muerillo", " medico general");
+                            m_leve[5]=new Medico("Felipe Andrade", " medico general");
+                                m_leve[6]=new Medico("Santiago Risueño", " medico general");
+                                    m_leve[7]=new Medico("Carina Bustamante", " medico general");
+                                        m_leve[8]=new Medico("Juan Velasco", " medico general");
+                                            m_leve[9]=new Medico("Tatiana Cordova", " medico general");
+                                                m_leve[10]=new Medico("Clever Andrade", " medico general");
+                                                    m_leve[11]=new Medico("Pedro Aguirre", " medico general");
+                                                        m_leve[12]=new Medico("Carla Zambrano", " medico general");
+                                                            m_leve[13]=new Medico("Natalia Vasconez", " medico general");
+                                                                m_leve[14]=new Medico("Liliana Endara", " medico general");
+                                                                
+
          int n=0;
-         System.out.println(m[2].getNombre() + m[2].getEspecialidad());
+         switch (m_critico[1].getEstado()){
+        case 1:
+        System.out.println("bien");
+        break;
+        case 2:
+        System.out.println("mal");
+        
+    }
+         int cont2=0;
+         int cont1;
+        
+         while ( m_critico[cont2].getEstado()!=1){
+             
+         cont2++;    
+             
+         }
+         
+        
          
        
          Turno[] turno=new Turno[1000];
@@ -46,6 +104,7 @@ public class SistemasDefinitivo {
          
          
          int i=0;
+         int j=0;
          
         Scanner sc=new Scanner(System.in);
         int inicio;
@@ -59,7 +118,7 @@ public class SistemasDefinitivo {
             System.out.println("Encuentrenos en: "+h.getDireccion().toString());
             inicio=sc.nextInt();
             sc.nextLine();
-             int j=0;
+            
             switch(inicio){
                 default:
                     System.out.println("Por favor, seleccione una opción válida");
@@ -111,19 +170,59 @@ public class SistemasDefinitivo {
                                             case 3:
                                                 System.out.println("El estado del paciente es critico, es necesario asignarle una habitacion  en el piso 3 y un cirujano general");
                                                 int Estado=3;
+                                                
                                                 System.out.println("El paciente debe se internado, el costo para que pueda ingresar es de 100 dólares");
                                                 double Pag=100;
+                                                while ( m_critico[cont2].getEstado()!=1){
+             
+                                                    cont2++;    
+             
+                                                     }
+                                                m_critico[cont2].setEstado(0);
+                                                
                                                 
                                                 
                                                 
                                                 turno[i]=new Turno(100, Fecha );
-                                                p[i]=new Paciente (Nombre, Estado ,m[1], turno[i], Pag  );
+                                                int aux5=0;
+                                               //si el medico esta ocupado el estado es "0" caso contrario "1"
+                                                System.out.println("tiene el paciente seguro?");
+                                                int x;
+                                                System.out.println(" si tiene seguro presione '1' caso contrio presione'0");
+                                                 x=sc.nextInt();
+                                                 System.out.println(x);
+                                                 float cuenta=0;
+                                                 
+                                                switch ( x){
+                                                    case 1:
+                                                        cuenta=10;
+                                                        break;
+                                                    case 0:
+                                                        
+                                                    cuenta= 100;
+                                                    break;
+                                                }
+                                                System.out.println(cuenta);
+                                               
+                                                
+                                                
+                                              
+                                                p[i]=new Paciente (Nombre, "Critico" ,m_critico [cont2], turno[i], 3, 1, cuenta );
                                                 System.out.println("A continuacion le mostramos los datos del paciente");
                                                 System.out.println("el nombre del paciente es");
                                                 System.out.println(p[i].getNombre() );
                                                 System.out.println("su diagnostico es "+p[i].getDiagnostico());
                                                 System.out.println("el medico asignado es " + p[i].getMedico().getEspecialidad());
                                                 System.out.println("la especialidad del medico es " +p[i].getMedico().getNombre()  );
+                                                switch ( x){
+                                                    case 1:
+                                                        System.out.println("El paciente si tiene seguro");
+                                                        break;
+                                                    case 0:
+                                                        
+                                                        System.out.println("El paciente no tiene seguro");
+                                                        break;
+                                                }
                                              
                                                 System.out.println("El costo y la fecha de ingreso es :");
                                                 System.out.println(p[i].getTurno().toString());
@@ -135,7 +234,7 @@ public class SistemasDefinitivo {
                                                 
                                             case 2:
                                                 System.out.println("El estado el paciente es grave, es necesario asiganarle un cirujano");
-                                                p[i].setMedico(m[2]);
+                                            
                                                 break;
                                             case 1:
                                                 System.out.println("El estado del paciente es leve, es necesario asignarle un medico general");
@@ -145,11 +244,11 @@ public class SistemasDefinitivo {
                                                switch (Caso){
                                                    case 1:
                                                        System.out.println(" Debido a que el paciente requiere una sutura, se le asignara un cirujano plastico y un turno para que sea atendido");
-                                                       p[i].setMedico(m[5]);
+                                                      
                                                        p[i].setTurno(t[n]);
                                                    case 2:
                                                        System.out.println(" Debido a que el paciente no requiere, se le asignara un medico general");
-                                                       p[i].setMedico(m[3]);
+                                                     
                                                        p[i].setTurno(t[n]);
                                                        
                                                        
@@ -159,7 +258,7 @@ public class SistemasDefinitivo {
                                             
                                                }
                                         
-                                
+                                               i++;
                                         }
                                        // p[1]=new Paciente(Nombre,Diagnostico);
                                        
@@ -174,6 +273,7 @@ public class SistemasDefinitivo {
                                         System.out.println("ingrese la especialidad");
                                         String Especialidad= aux.nextLine();
                                         break;
+                                        
                                         
                                     case 3:
                                         System.out.println("que datos del paciente desea buscar");

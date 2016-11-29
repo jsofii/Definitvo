@@ -11,6 +11,14 @@ package sistemasdefinitivo;
  */
 public class Habitacion extends Cuarto{
     private int capacidad;
+    private int estado;
+
+    public Habitacion(int capacidad, int estado, int numero, Piso piso) {
+        super(numero, piso);
+        this.capacidad = capacidad;
+        this.estado = estado;
+    }
+   
 
     public int getCapacidad() {
         return capacidad;
