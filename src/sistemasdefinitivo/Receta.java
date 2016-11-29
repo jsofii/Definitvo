@@ -12,6 +12,7 @@ package sistemasdefinitivo;
 public class Receta {
     private String medicamento;
     private int concentracion;
+    
 
     public String getMedicamento() {
         return medicamento;

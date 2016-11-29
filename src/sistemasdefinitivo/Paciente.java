@@ -46,7 +46,7 @@ public class Paciente extends Persona{
         return nombre;
     }
 
-    public Paciente(String nombre, String diagnostico, Medico medico,String elergias, Turno turno, int piso,  int seguro, float cuenta) {
+    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, int piso,  int seguro, float cuenta) {
     
         this.nombre = nombre;
         this.diagnostico = diagnostico;
@@ -55,8 +55,11 @@ public class Paciente extends Persona{
         this.seguro=seguro;
         this.piso=piso;
         this.alergias=alergias;
-    
+            
         this.cuenta = cuenta;
+    }
+    public String toString (){
+        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Piso:"+piso+"\n"+seguro+""+cuenta;
     }
 
     

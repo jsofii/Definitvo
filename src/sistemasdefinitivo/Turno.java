@@ -108,5 +108,11 @@ public class Turno {
     public String toString(){
         return "la fecha asignada para el turno es"+fecha;
     }
+
+    public Turno(int dia, int mes, int año) {
+        this.dia = dia;
+        this.mes = mes;
+        this.año = año;
+    }
     
 }

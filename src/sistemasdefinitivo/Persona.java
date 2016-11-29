@@ -10,7 +10,7 @@ package sistemasdefinitivo;
  * @author USER
  */
 public class Persona {
-    private String nombre;
+    String nombre;
 
     public Persona(String nombre) {
         this.nombre = nombre;

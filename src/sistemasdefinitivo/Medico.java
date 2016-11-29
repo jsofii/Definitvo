@@ -12,7 +12,9 @@ package sistemasdefinitivo;
 public class Medico extends Persona {
     private String especialidad;
     private int estado;
-    
+    public String toString (){
+        return "el nombre del medico es:"+nombre+"\n"+"la especialidad es:"+especialidad+"\n"+"el estado es:"+estado;
+    }
 
     public Medico(String nombre, String especialidad, int estado) {
         super(nombre);
