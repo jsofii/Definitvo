@@ -91,8 +91,7 @@ public class Paciente extends Persona{
     public Turno getTurno() {
         return turno;    }
 
-    public void setTurno(Turno turno) {
-        this.turno = turno;
+    public void setTurno(Turno turno) {        this.turno = turno;
     }
 
     public int getSeguro() {
@@ -127,26 +126,11 @@ public class Paciente extends Persona{
                 estado1="Critico";
                 break;
         }
-        return estado1;
+        return estado;
     }
     
     public void setEstado(int estado){
-        String estado1="";
-        switch(this.estado){
-            case 0:
-                estado1="Sano";
-                break;
-            case 1:
-                estado1="Leve";
-                break;
-            case 2:
-                estado1="Grave";
-                break;
-            case 3:
-                estado1="Critico";
-                break;
-        }
-        this.estado=estado1;
+        this.estado=estado;
     }
     
 
