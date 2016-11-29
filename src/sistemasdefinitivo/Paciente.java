@@ -18,6 +18,16 @@ public class Paciente extends Persona{
      private Receta receta;
      private  float cuenta;
      private  int piso;
+     private String alergias;
+
+    public String getAlergias() {
+        return alergias;
+    }
+
+    public void setAlergias(String alergias) {
+        this.alergias = alergias;
+    }
+     
 
    
 
@@ -36,7 +46,7 @@ public class Paciente extends Persona{
         return nombre;
     }
 
-    public Paciente(String nombre, String diagnostico, Medico medico, Turno turno, int piso,  int seguro, float cuenta) {
+    public Paciente(String nombre, String diagnostico, Medico medico,String elergias, Turno turno, int piso,  int seguro, float cuenta) {
     
         this.nombre = nombre;
         this.diagnostico = diagnostico;
@@ -44,6 +54,7 @@ public class Paciente extends Persona{
         this.turno = turno;
         this.seguro=seguro;
         this.piso=piso;
+        this.alergias=alergias;
     
         this.cuenta = cuenta;
     }
