@@ -114,5 +114,8 @@ public class Turno {
         this.mes = mes;
         this.año = año;
     }
-    
+  
+    public String toString2(){
+        return "Dia"+dia+"\n"+"mes:"+mes+"\n"+"año:"+año;
+    }
 }

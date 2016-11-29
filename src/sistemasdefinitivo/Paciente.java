@@ -15,10 +15,12 @@ public class Paciente extends Persona{
      private Medico medico;
      private Turno turno;
      private int  seguro;
-     private Receta receta;
+     private String receta;
      private  float cuenta;
      private  int piso;
      private String alergias;
+
+    
 
     public String getAlergias() {
         return alergias;
@@ -46,7 +48,7 @@ public class Paciente extends Persona{
         return nombre;
     }
 
-    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, int piso,  int seguro, float cuenta) {
+    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, int piso,  int seguro,String receta, float cuenta) {
     
         this.nombre = nombre;
         this.diagnostico = diagnostico;
@@ -55,11 +57,11 @@ public class Paciente extends Persona{
         this.seguro=seguro;
         this.piso=piso;
         this.alergias=alergias;
-            
+        this.receta=receta;
         this.cuenta = cuenta;
     }
     public String toString (){
-        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Piso:"+piso+"\n"+seguro+""+cuenta;
+        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Piso:"+piso+"\n"+seguro+"\n"+"valor a pagar:"+cuenta+"Receta:"+receta;
     }
 
     
@@ -103,15 +105,17 @@ public class Paciente extends Persona{
         this.seguro = seguro;
     }
 
-   
-
-    public Receta getReceta() {
+    public String getReceta() {
         return receta;
     }
 
-    public void setReceta(Receta receta) {
+    public void setReceta(String receta) {
         this.receta = receta;
     }
+
+   
+
+   
 
     public float getCuenta() {
         return cuenta;
@@ -123,9 +127,9 @@ public class Paciente extends Persona{
 
   
 
-    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno,int piso, int seguro, Receta receta, float cuenta, String nombre) {
+    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno,int piso, int seguro, String receta, float cuenta) {
         super(Nombre);
-        this.nombre = nombre;
+       
         this.diagnostico = diagnostico;
         this.medico = medico;
         this.turno = turno;
@@ -135,15 +139,7 @@ public class Paciente extends Persona{
         this.piso=piso;
     }
 
-    public Paciente(String nombre, String diagnostico, Medico medico, Turno turno, int seguro, Receta receta, float cuenta) {
-        this.nombre = nombre;
-        this.diagnostico = diagnostico;
-        this.medico = medico;
-        this.turno = turno;
-        this.seguro = seguro;
-        this.receta = receta;
-        this.cuenta = cuenta;
-    }
+   
     
     
     
