@@ -31,13 +31,13 @@ public class Funcionario {
         paciente.setEstado(estado);
         Scanner sc=new Scanner(System.in);
         switch(estado){
-            case 4:
+            case 3:
                 System.out.println("El estado del paciente es crítico, es necesario asignarle una habitacion  en Emergencias y un cirujano general");
                 java.util.Date fecha = new Date();
                 Turno turno=new Turno(1000, fecha);
                 paciente.setTurno(turno);                               
                 break;      
-            case 3:
+            case 2:
                 System.out.println("El estado del paciente es grave, es necesario asignarle una habitacion  en Emergencias y un cirujano general");
                 java.util.Date fecha1 = new Date();
                 Turno turno1=new Turno(100, fecha1);
