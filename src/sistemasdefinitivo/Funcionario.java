@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -45,6 +44,17 @@ public class Funcionario {
                 System.out.println("Elija un opcion");
                 System.out.println("1. Paciente con traumatismo craneal");
                 System.out.println("2. Paciente sin traumantismo creaneal");
+                break;
+            case 1:
+                System.out.println("El estado del paciente es leve, es necesario asignarle un medico general");
+                System.out.println("Ingrese la fecha para el turno");
+                System.out.print("Día ");
+                int dia=sc.nextInt();
+                System.out.print("Mes ");
+                int mes=sc.nextInt();
+                System.out.print("año");
+                int año=sc.nextInt();
+                Turno turno2=new Turno(dia, mes, año);
                 break;
         }
         paciente.setMedico(medico);
