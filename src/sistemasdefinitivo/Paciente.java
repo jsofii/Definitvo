@@ -11,16 +11,14 @@ package sistemasdefinitivo;
  */
 public class Paciente extends Persona{
      private String diagnostico;
-     private Medico medico;
-     private Turno turno;
-     private int  seguro;
-     private Receta receta;
-     private  float cuenta;
-     private  int piso;
-     private String alergias;
+    private Medico medico;
+    private Turno turno;
+    private double seguro;
+    private Receta receta;
+    private double cuenta;
+    private String alergias;
     private int estado;
-
-    
+    private Habitacion habitacion;
 
     public String getAlergias() {
         return alergias;
@@ -29,43 +27,27 @@ public class Paciente extends Persona{
     public void setAlergias(String alergias) {
         this.alergias = alergias;
     }
-     
-
-   
-
-    public int getPiso() {
-        return piso;
-    }
-
-    public void setPiso(int piso) {
-        this.piso = piso;
-    }
-
     
-
     @Override
     public String getNombre() {
         return nombre;
     }
 
-    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, int piso,  int seguro,String receta, float cuenta) {
+    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, double seguro,Receta receta, double cuenta) {
     
         this.nombre = nombre;
         this.diagnostico = diagnostico;
         this.medico = medico;
         this.turno = turno;
         this.seguro=seguro;
-        this.piso=piso;
         this.alergias=alergias;
         this.receta=receta;
         this.cuenta = cuenta;
     }
+     @Override
     public String toString (){
-        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Piso:"+piso+"\n"+seguro+"\n"+"valor a pagar:"+cuenta+"Receta:"+receta;
+        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Habitacion:: "+habitacion+"\n"+seguro+"\n"+"valor a pagar:"+cuenta+"Receta:"+receta;
     }
-
-    
-   
 
     @Override
     public void setNombre(String nombre) {
@@ -91,14 +73,15 @@ public class Paciente extends Persona{
     public Turno getTurno() {
         return turno;    }
 
-    public void setTurno(Turno turno) {        this.turno = turno;
+    public void setTurno(Turno turno) {        
+        this.turno = turno;
     }
 
-    public int getSeguro() {
+    public double getSeguro() {
         return seguro;
     }
 
-    public void setSeguro(int seguro) {
+    public void setSeguro(double seguro) {
         this.seguro = seguro;
     }
 
@@ -108,6 +91,14 @@ public class Paciente extends Persona{
 
     public void setReceta(Receta receta) {
         this.receta = receta;
+    }
+
+    public Habitacion getHabitacion() {
+        return habitacion;
+    }
+
+    public void setHabitacion(Habitacion habitacion) {
+        this.habitacion = habitacion;
     }
 
    public String getEstado(){
@@ -126,27 +117,22 @@ public class Paciente extends Persona{
                 estado1="Critico";
                 break;
         }
-        return estado;
+        return estado1;
     }
     
     public void setEstado(int estado){
         this.estado=estado;
     }
-    
-
-   
-
-    public float getCuenta() {
+       
+    public double getCuenta() {
         return cuenta;
     }
 
-    public void setCuenta(float cuenta) {
+    public void setCuenta(double cuenta) {
         this.cuenta = cuenta;
     }
 
-  
-
-    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno,int piso, int seguro, String receta, float cuenta) {
+    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno, int seguro, Receta receta, double cuenta) {
         super(Nombre);
        
         this.diagnostico = diagnostico;
@@ -155,13 +141,8 @@ public class Paciente extends Persona{
         this.seguro = seguro;
         this.receta = receta;
         this.cuenta = cuenta;
-        this.piso=piso;
     }
-
-   
-    
-    
-    
-    
-}
+    public Paciente(){
+        this.cuenta=this.turno.getPago()*(1-this.seguro);
+    }
 
