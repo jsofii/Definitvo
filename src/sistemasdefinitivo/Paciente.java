@@ -145,4 +145,4 @@ public class Paciente extends Persona{
     public Paciente(){
         this.cuenta=this.turno.getPago()*(1-this.seguro);
     }
-
+}
