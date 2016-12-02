@@ -46,7 +46,6 @@ public class Funcionario {
                 System.out.println("2. Paciente sin traumantismo creaneal");
                 break;
             case 1:
-                System.out.println("El estado del paciente es leve, es necesario asignarle un medico general");
                 System.out.println("Ingrese la fecha para el turno");
                 System.out.print("Día ");
                 int dia=sc.nextInt();
@@ -55,17 +54,20 @@ public class Funcionario {
                 System.out.print("año");
                 int año=sc.nextInt();
                 Turno turno2=new Turno(dia, mes, año);
+                paciente.setTurno(turno2);
                 break;
         }
         paciente.setMedico(medico);
+        medico.setEstado(1);
         paciente.setHabitacion(habitacion);
         System.out.println("¿El paciente "+nombre+" tiene alergias a algún medicamento?");
-        System.out.println("1.- Ibuprofeno");
-        System.out.println("2.- Penicilina");
-        System.out.println("3.- Anticonvulsivos");
-        System.out.println("4.- Antibióticos");
-        System.out.println("5.-Ninguno");
+        System.out.println("1. Ibuprofeno");
+        System.out.println("2. Penicilina");
+        System.out.println("3. Anticonvulsivos");
+        System.out.println("4. Antibióticos");
+        System.out.println("5. Ninguno");
         int alergia1=sc.nextInt();
+        sc.nextLine();
         String al="";
         switch(alergia1){
             case 1:
@@ -88,12 +90,14 @@ public class Funcionario {
         System.out.println("Tiene el paciente seguro?");
         System.out.println("1. Si");
         System.out.println("2. No");
-        int cont1=sc.nextInt();                                   
-        switch( cont1){
+        int cont1=sc.nextInt();
+        sc.nextLine();
+        switch(cont1){
             case 1:
                 System.out.println("¿Cuál es la cobertura del seguro?");
-                System.out.println("Ingreselo como termino porcentual en un rango de 0 a 1");
-                double cob=sc.nextDouble();
+                System.out.println("Ingreselo como termino porcentual en un rango de 0 a 100");
+                int cob=sc.nextInt();
+                sc.nextLine();
                 paciente.setSeguro(cob);
                 break;
             case 2:
