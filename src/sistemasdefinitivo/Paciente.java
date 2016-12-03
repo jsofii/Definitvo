@@ -10,15 +10,15 @@ package sistemasdefinitivo;
  * @author USER
  */
 public class Paciente extends Persona{
-     private String diagnostico;
+    private Habitacion habitacion;
+    private String diagnostico;
     private Medico medico;
     private Turno turno;
     private double seguro;
     private Receta receta;
     private double cuenta;
-    private String alergias;
     private int estado;
-    private Habitacion habitacion;
+    private String alergias;
 
     public String getAlergias() {
         return alergias;
@@ -26,32 +26,6 @@ public class Paciente extends Persona{
 
     public void setAlergias(String alergias) {
         this.alergias = alergias;
-    }
-    
-    @Override
-    public String getNombre() {
-        return nombre;
-    }
-
-    public Paciente(String nombre, String diagnostico, Medico medico, String alergias, Turno turno, double seguro,Receta receta, double cuenta) {
-    
-        this.nombre = nombre;
-        this.diagnostico = diagnostico;
-        this.medico = medico;
-        this.turno = turno;
-        this.seguro=seguro;
-        this.alergias=alergias;
-        this.receta=receta;
-        this.cuenta = cuenta;
-    }
-     @Override
-    public String toString (){
-        return "Nombre:"+nombre + "\n"+ "Diagnostico"+ diagnostico+"\n"+medico+"\n"+"Alergia:"+alergias+"\n"+"Turno"+turno+"\n"+"Habitacion:: "+habitacion+"\n"+seguro+"\n"+"valor a pagar:"+cuenta+"Receta:"+receta;
-    }
-
-    @Override
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
     }
 
     public String getDiagnostico() {
@@ -61,7 +35,7 @@ public class Paciente extends Persona{
     public void setDiagnostico(String diagnostico) {
         this.diagnostico = diagnostico;
     }
-   
+
     public Medico getMedico() {
         return medico;
     }
@@ -71,9 +45,10 @@ public class Paciente extends Persona{
     }
 
     public Turno getTurno() {
-        return turno;    }
+        return turno;
+    }
 
-    public void setTurno(Turno turno) {        
+    public void setTurno(Turno turno) {
         this.turno = turno;
     }
 
@@ -93,6 +68,14 @@ public class Paciente extends Persona{
         this.receta = receta;
     }
 
+    public double getCuenta() {
+        return cuenta;
+    }
+
+    public void setCuenta(double cuenta) {
+        this.cuenta = cuenta;
+    }
+    
     public Habitacion getHabitacion() {
         return habitacion;
     }
@@ -100,8 +83,8 @@ public class Paciente extends Persona{
     public void setHabitacion(Habitacion habitacion) {
         this.habitacion = habitacion;
     }
-
-   public String getEstado(){
+    
+    public String getEstado(){
         String estado1="";
         switch(this.estado){
             case 0:
@@ -123,26 +106,46 @@ public class Paciente extends Persona{
     public void setEstado(int estado){
         this.estado=estado;
     }
-       
-    public double getCuenta() {
-        return cuenta;
-    }
-
-    public void setCuenta(double cuenta) {
-        this.cuenta = cuenta;
-    }
-
-    public Paciente(String Nombre, String diagnostico, Medico medico, Turno turno, int seguro, Receta receta, double cuenta) {
-        super(Nombre);
-       
-        this.diagnostico = diagnostico;
-        this.medico = medico;
-        this.turno = turno;
-        this.seguro = seguro;
-        this.receta = receta;
-        this.cuenta = cuenta;
-    }
-    public Paciente(){
+    
+    public Paciente(int estado,Habitacion habitacion,Medico medico){
+        super();
+        this.habitacion=habitacion;
+        this.estado=estado;
+        this.medico=medico;
+        this.receta=new Receta();
+        this.seguro=0.8;
+        this.turno=new Turno();
+        this.diagnostico="";
         this.cuenta=this.turno.getPago()*(1-this.seguro);
+    }
+    
+    public Paciente(Habitacion habitacion,Medico medico){
+        super();
+        this.habitacion=habitacion;
+        this.estado=1;
+        this.medico=medico;
+        this.receta=new Receta();
+        this.seguro=0.8;
+        this.turno=new Turno();
+        this.diagnostico="";
+        this.cuenta=this.turno.getPago()*(1-this.seguro);
+    }
+    
+    public Paciente(){
+        super();
+        this.habitacion=new Habitacion();
+        this.estado=1;
+        this.medico=new Medico();
+        this.receta=new Receta();
+        this.seguro=0.8;
+        this.turno=new Turno();
+        this.diagnostico="";
+        this.cuenta=this.turno.getPago()*(1-this.seguro);
+    }
+    
+    public void Cancelar(Paciente paciente){
+        this.cuenta=0;
+        System.out.println("Transacción realizada con exito");
+        System.out.println("¡Muchas Gracias!");
     }
 }
