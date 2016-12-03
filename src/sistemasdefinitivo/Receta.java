@@ -12,7 +12,6 @@ package sistemasdefinitivo;
 public class Receta {
     private String medicamento;
     private int concentracion;
-    
 
     public String getMedicamento() {
         return medicamento;
@@ -34,11 +33,6 @@ public class Receta {
         this.medicamento="Paracetamol";
         this.concentracion=500;
     }
-
-    public Receta(String Medicamento, int Concentracion) {
-        this.medicamento = Medicamento;
-        this.concentracion = Concentracion;
-    }
     
-  
 }
+
