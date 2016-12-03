@@ -27,6 +27,28 @@ public class Funcionario {
         this.ci=ci;
     }
     
+    public Medico registrarMedico(Oficina oficina,String nombre,int especialidad){
+        Medico medico=new Medico();
+        medico.setNombre(nombre);
+        switch(especialidad){
+            case 1:
+                medico.setEspecialidad("General");
+                break;
+            case 2:
+                medico.setEspecialidad("Medico Quirurgico");
+                break;
+            case 3:
+                medico.setEspecialidad("Cirugia");
+                break;
+            case 4:
+                medico.setEspecialidad("Laboratorio");
+                break;
+        }
+        medico.setOficina(oficina);
+        oficina.setEstado(1);
+        return medico;
+    }
+    
     public Paciente registrarPaciente(String nombre,int estado,Medico medico,Habitacion habitacion){
         Paciente paciente=new Paciente();
         paciente.setNombre(nombre);
