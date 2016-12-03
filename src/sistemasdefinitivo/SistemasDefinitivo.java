@@ -18,7 +18,9 @@ public class SistemasDefinitivo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-         Hospital h=new Hospital();
+        int aux=0;
+        int med=0;
+        Hospital h=new Hospital();
         Scanner sc=new Scanner(System.in);
         int inicio;
         do{
@@ -85,11 +87,49 @@ public class SistemasDefinitivo {
                                     System.out.println("6. Salir");
                                     fun=sc.nextInt();
                                     sc.nextLine();
-                                    int aux=0;
-                                    int med=0;
                                     switch(fun){
                                         case 1:
-                                            
+                                            System.out.print("Ingrese el nombre del medico: ");
+                                            String nombrem = sc.nextLine();
+                                            System.out.println("¿Cuál es la especialidad del médico " + nombrem + "?");
+                                            System.out.println("1. General");
+                                            System.out.println("2. Medico Quirurgico");
+                                            System.out.println("3. Cirugia");
+                                            System.out.println("4. Laboratorio");
+                                            int esp = sc.nextInt();
+                                            sc.nextLine();
+                                            System.out.println("Por favor, asigne una oficina al medico " + nombrem);
+                                            switch (esp) {
+                                                case 1:
+                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                                                        if(o[i].getTipo().equals("Consultorio")&&o[i].getEstado()==0){
+                                                            System.out.println(i+". "+o[i].getNumero());
+                                                        }
+                                                    }
+                                                case 2:
+                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                                                        if(o[i].getTipo().equals("Quirófano")&&o[i].getEstado()==0){
+                                                            System.out.println(i+". "+o[i].getNumero());
+                                                        }
+                                                    }
+                                                case 3:
+                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                                                        if(o[i].getTipo().equals("Quirofano")&&o[i].getEstado()==0){
+                                                            System.out.println(i+". "+o[i].getNumero());
+                                                        }
+                                                    }
+                                                case 4:
+                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                                                        if(o[i].getTipo().equals("Laboratorio")&&o[i].getEstado()==0){
+                                                            System.out.println(i+". "+o[i].getNumero());
+                                                        }
+                                                    }
+                                            }
+                                            int ofi=sc.nextInt();
+                                            sc.nextLine();
+                                            m[auxm]=f.registrarMedico(o[ofi], nombrem, esp);
+                                            auxm++;
+                                            break;
                                         case 2:    
                                             System.out.println("Ingrese el nombre del paciente:");
                                             String nombre=sc.nextLine();
