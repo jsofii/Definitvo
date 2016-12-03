@@ -12,8 +12,8 @@ import java.util.Scanner;
  *
  * @author USER
  */
-public class Funcionario {
-    private String ci;
+public class Funcionario extends Persona{
+     private String ci;
 
     public String getCi() {
         return ci;
@@ -26,6 +26,7 @@ public class Funcionario {
     public Funcionario(String ci){
         this.ci=ci;
     }
+    
     
     public Medico registrarMedico(Oficina oficina,String nombre,int especialidad){
         Medico medico=new Medico();
@@ -56,19 +57,14 @@ public class Funcionario {
         Scanner sc=new Scanner(System.in);
         switch(estado){
             case 3:
-                System.out.println("El estado del paciente es crítico, es necesario asignarle una habitacion  en Emergencias y un cirujano general");
                 java.util.Date fecha = new Date();
                 Turno turno=new Turno(1000, fecha);
                 paciente.setTurno(turno);                               
                 break;      
             case 2:
-                System.out.println("El estado del paciente es grave, es necesario asignarle una habitacion  en Emergencias y un cirujano general");
                 java.util.Date fecha1 = new Date();
                 Turno turno1=new Turno(100, fecha1);
                 paciente.setTurno(turno1);
-                System.out.println("Elija un opcion");
-                System.out.println("1. Paciente con traumatismo craneal");
-                System.out.println("2. Paciente sin traumantismo creaneal");
                 break;
             case 1:
                 System.out.println("Ingrese la fecha para el turno");
@@ -76,7 +72,7 @@ public class Funcionario {
                 int dia=sc.nextInt();
                 System.out.print("Mes ");
                 int mes=sc.nextInt();
-                System.out.print("año");
+                System.out.print("Año ");
                 int año=sc.nextInt();
                 Turno turno2=new Turno(dia, mes, año);
                 paciente.setTurno(turno2);
@@ -85,6 +81,7 @@ public class Funcionario {
         paciente.setMedico(medico);
         medico.setEstado(1);
         paciente.setHabitacion(habitacion);
+        habitacion.setEstado(habitacion.getEstado()+1);
         System.out.println("¿El paciente "+nombre+" tiene alergias a algún medicamento?");
         System.out.println("1. Ibuprofeno");
         System.out.println("2. Penicilina");
@@ -131,4 +128,5 @@ public class Funcionario {
         }
         return paciente;
     }
+    
 }
