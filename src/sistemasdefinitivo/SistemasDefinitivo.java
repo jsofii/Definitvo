@@ -12,8 +12,25 @@ import java.util.Scanner;
  *
  * @author USER
  */
-public class SistemasDefinitivo {
-   
+public static void ingresoHospital(Hospital h) {
+        System.out.print("Ingrese el nombre del hospital: ");
+        Scanner sc = new Scanner(System.in);
+        String nombreh = sc.nextLine();
+        System.out.print("Ingrese la calificación del " + nombreh + ": ");
+        String calificacion = sc.nextLine();
+        System.out.print("Ingrese la capacidad del " + nombreh + ": ");
+        int capacidadh = sc.nextInt();
+        sc.nextLine();
+        System.out.print("Ingrese la calle principal del " + nombreh + ": ");
+        String principal = sc.nextLine();
+        System.out.print("Ingrese la calle secundaria del " + nombreh + ": ");
+        String secundaria = sc.nextLine();
+        System.out.print("Ingrese el numero de calle del " + nombreh + ": ");
+        String numero = sc.nextLine();
+        h.setHospital(nombreh, calificacion, capacidadh, principal, secundaria, numero);
+        System.out.println(h.getNombre() + " ingresado con exito");
+
+    }
 
     public static int menuIngreso(Hospital h) {
         Scanner sc = new Scanner(System.in);
@@ -53,9 +70,76 @@ public class SistemasDefinitivo {
         System.out.println("4. Consultar lista de medicos");
         System.out.println("5. Asignar cita a un paciente");
         System.out.println("6. Salir");
-        int menu=sc.nextInt();
+        int menu = sc.nextInt();
         return menu;
+
+    }
+
+    public static void opcionMedico(Hospital h, Medico m[]) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Usted eligio medico");
+        System.out.println("Por favor, ingrese su nombre distinguiendo entre mayusculas y minusculas ");
+        String userm = sc.nextLine();
+        for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+
+            if (userm.equals(m[i].getNombre())) {
+                System.out.println("¡Inicio de sesion exitoso!");
+                System.out.println("¿Qué desea hacer?");
+                System.out.println("1. Consultar lista de pacientes");
+                System.out.println("2. Atender paciente");
+            }
+        }
+    }
+
+    public static void ingresarMedico(String nombrem, int esp, Hospital h,Funcionario f, Oficina o[], Medico m[], int auxm) {
         
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Ingrese el nombre del medico: ");
+        nombrem = sc.nextLine();
+        System.out.println("¿Cuál es la especialidad del médico " + nombrem + "?");
+        System.out.println("1. General");
+        System.out.println("2. Medico Quirurgico");
+        System.out.println("3. Cirugia");
+        System.out.println("4. Laboratorio");
+        esp = sc.nextInt();
+        System.out.println("Por favor, asigne una oficina al medico " + nombrem);
+        switch (esp) {
+            case 1:
+                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                    if (o[i].getTipo().equals("Consultorio") && o[i].getEstado() == 0) {
+
+                        System.out.println(i + ". " + o[i].getNumero());
+                    }
+                }
+                break;
+            case 2:
+                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                    if (o[i].getTipo().equals("Quirófano") && o[i].getEstado() == 0) {
+                        System.out.println(i + ". " + o[i].getNumero());
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                    if (o[i].getTipo().equals("Quirofano") && o[i].getEstado() == 0) {
+                        System.out.println(i + ". " + o[i].getNumero());
+                    }
+                }
+                break;
+            case 4:
+                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                    if (o[i].getTipo().equals("Laboratorio") && o[i].getEstado() == 0) {
+                        System.out.println(i + ". " + o[i].getNumero());
+                    }
+                }
+                break;
+        }
+        int ofi = sc.nextInt();
+        sc.nextLine();
+        auxm=0;
+        m[auxm] = f.registrarMedico(o[ofi], nombrem, esp);
+        auxm++;
+
     }
 
     /**
@@ -111,52 +195,22 @@ public class SistemasDefinitivo {
                                 Funcionario f = new Funcionario(ci);
                                 int fun;
                                 do {
-                                    
+
                                     fun = menuOpciones();
                                     switch (fun) {
                                         case 1:
-                                            System.out.print("Ingrese el nombre del medico: ");
-                                            String nombrem = sc.nextLine();
-                                            System.out.println("¿Cuál es la especialidad del médico " + nombrem + "?");
-                                            System.out.println("1. General");
-                                            System.out.println("2. Medico Quirurgico");
-                                            System.out.println("3. Cirugia");
-                                            System.out.println("4. Laboratorio");
-                                            int esp = sc.nextInt();
-                                            sc.nextLine();
-                                            System.out.println("Por favor, asigne una oficina al medico " + nombrem);
-                                            switch (esp) {
-                                                case 1:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Consultorio") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
-                                                    }
-                                                case 2:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Quirófano") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
-                                                    }
-                                                case 3:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Quirofano") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
-                                                    }
-                                                case 4:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Laboratorio") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
-                                                    }
-                                            }
-                                            int ofi = sc.nextInt();
-                                            sc.nextLine();
-                                            m[auxm] = f.registrarMedico(o[ofi], nombrem, esp);
-                                            auxm++;
-                                            break;
+                                            String nombrem = "Sin nombre";
+                                            int esp = 0;
+                                            
+                                            ingresarMedico(nombrem, esp,  h, f, o, m, auxm);
+                                            
+
+                                          
+                                                   
+                                                    break;
+                                            
                                         case 2:
+                                            
                                             System.out.print("Ingrese el nombre del paciente: ");
                                             String nombre = sc.nextLine();
                                             System.out.println("Ingrese el estado del paciente " + nombre);
@@ -213,22 +267,15 @@ public class SistemasDefinitivo {
                                             pa[aux] = f.registrarPaciente(nombre, estado, m[med], hab[habi]);
                                             aux++;
                                             break;
-                                    }
+}
+                                            
+                                            
+                                    
                                 } while (fun != 6);
 
                                 break;
                             case 2:
-                                System.out.println("Usted eligio medico");
-                                System.out.println("Por favor, ingrese su nombre distinguiendo entre mayusculas y minusculas ");
-                                String userm = sc.nextLine();
-                                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                    if (userm.equals(m[i].getNombre())) {
-                                        System.out.println("¡Inicio de sesion exitoso!");
-                                        System.out.println("¿Qué desea hacer?");
-                                        System.out.println("1. Consultar lista de pacientes");
-                                        System.out.println("2. Atender paciente");
-                                    }
-                                }
+                                opcionMedico(h, m);
                                 break;
                             case 3:
                                 System.out.println("Usted eligio paciente");
@@ -237,21 +284,7 @@ public class SistemasDefinitivo {
                     } while (usuario != 4);
                     break;
                 case 2:
-                    System.out.print("Ingrese el nombre del hospital: ");
-                    String nombreh = sc.nextLine();
-                    System.out.print("Ingrese la calificación del " + nombreh + ": ");
-                    String calificacion = sc.nextLine();
-                    System.out.print("Ingrese la capacidad del " + nombreh + ": ");
-                    int capacidadh = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Ingrese la calle principal del " + nombreh + ": ");
-                    String principal = sc.nextLine();
-                    System.out.print("Ingrese la calle secundaria del " + nombreh + ": ");
-                    String secundaria = sc.nextLine();
-                    System.out.print("Ingrese el numero de calle del " + nombreh + ": ");
-                    String numero = sc.nextLine();
-                    h.setHospital(nombreh, calificacion, capacidadh, principal, secundaria, numero);
-                    System.out.println(h.getNombre() + " ingresado con exito");
+                    ingresoHospital(h);
                     break;
                 case 3:
                     System.out.println("Gracias por usar nuestro servicio");
@@ -259,7 +292,6 @@ public class SistemasDefinitivo {
             }
         } while (inicio != 3);
     }
+    
 }
-
-
     
