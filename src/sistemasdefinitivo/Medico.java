@@ -13,6 +13,9 @@ public class Medico extends Persona {
     private String especialidad;
     private Oficina oficina;
     private int estado;
+      public String toString(){
+        return nombre+ "\n"+especialidad+"\n"+estado;
+    }
     
     public int getEstado(){
         return this.estado;
