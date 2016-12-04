@@ -12,27 +12,8 @@ import java.util.Scanner;
  *
  * @author USER
  */
-ublic class SistemaHospitalario {
 
-    public static void ingresoHospital(Hospital h) {
-        System.out.print("Ingrese el nombre del hospital: ");
-        Scanner sc = new Scanner(System.in);
-        String nombreh = sc.nextLine();
-        System.out.print("Ingrese la calificación del " + nombreh + ": ");
-        String calificacion = sc.nextLine();
-        System.out.print("Ingrese la capacidad del " + nombreh + ": ");
-        int capacidadh = sc.nextInt();
-        sc.nextLine();
-        System.out.print("Ingrese la calle principal del " + nombreh + ": ");
-        String principal = sc.nextLine();
-        System.out.print("Ingrese la calle secundaria del " + nombreh + ": ");
-        String secundaria = sc.nextLine();
-        System.out.print("Ingrese el numero de calle del " + nombreh + ": ");
-        String numero = sc.nextLine();
-        h.setHospital(nombreh, calificacion, capacidadh, principal, secundaria, numero);
-        System.out.println(h.getNombre() + " ingresado con exito");
-
-    }
+   public class SistemasDefinitivo {
 
     public static int menuIngreso(Hospital h) {
         Scanner sc = new Scanner(System.in);
@@ -77,74 +58,27 @@ ublic class SistemaHospitalario {
 
     }
 
-    /*public static void opcionMedico(Hospital h, Medico m[]) {
-        Scanner sc = new Scanner(System.in);
-        System.out.println("Usted eligio medico");
-        System.out.println("Por favor, ingrese su nombre distinguiendo entre mayusculas y minusculas ");
-        String userm = sc.nextLine();
-        for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-
-            if (userm.equals(m[i].getNombre())) {
-                System.out.println("¡Inicio de sesion exitoso!");
-                System.out.println("¿Qué desea hacer?");
-                System.out.println("1. Consultar lista de pacientes");
-                System.out.println("2. Atender paciente");
-            }
+    public static void listamedicos(Medico m[]) {
+        for (int i = 0; i < m.length; i++) {
+            System.out.println(i + ".-" + m[i].toString());
+            System.out.println("\n");
         }
     }
 
-    public static void ingresarMedico(String nombrem, int esp, Hospital h,Funcionario f, Oficina o[], Medico m[], int auxm) {
-        
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Ingrese el nombre del medico: ");
-        nombrem = sc.nextLine();
-        System.out.println("¿Cuál es la especialidad del médico " + nombrem + "?");
-        System.out.println("1. General");
-        System.out.println("2. Medico Quirurgico");
-        System.out.println("3. Cirugia");
-        System.out.println("4. Laboratorio");
-        esp = sc.nextInt();
-        System.out.println("Por favor, asigne una oficina al medico " + nombrem);
-        switch (esp) {
-            case 1:
-                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                    if (o[i].getTipo().equals("Consultorio") && o[i].getEstado() == 0) {
-
-                        System.out.println(i + ". " + o[i].getNumero());
-                    }
-                }
-                break;
-            case 2:
-                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                    if (o[i].getTipo().equals("Quirófano") && o[i].getEstado() == 0) {
-                        System.out.println(i + ". " + o[i].getNumero());
-                    }
-                }
-                break;
-            case 3:
-                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                    if (o[i].getTipo().equals("Quirofano") && o[i].getEstado() == 0) {
-                        System.out.println(i + ". " + o[i].getNumero());
-                    }
-                }
-                break;
-            case 4:
-                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                    if (o[i].getTipo().equals("Laboratorio") && o[i].getEstado() == 0) {
-                        System.out.println(i + ". " + o[i].getNumero());
-                    }
-                }
-                
-                break;
+    public static void listapacientes(Paciente p[]) {
+        for (int i = 0; i < p.length; i++) {
+            System.out.println(i + ".-" + p[i].toString());
+            System.out.println("\n");
         }
-        int ofi = sc.nextInt();
-        sc.nextLine();
-        auxm=0;
-        m[auxm] = f.registrarMedico(o[ofi], nombrem, esp);
-        auxm++;
-
     }
-    
+    public static void listaestados(){
+        System.out.println("1.-sano");
+        System.out.println("2.- leve");
+        System.out.println("3.- grave");
+        System.out.println("4.- crítico");
+            
+               
+    }
 
     /**
      * @param args the command line arguments
@@ -154,9 +88,8 @@ ublic class SistemaHospitalario {
         int auxm = 0;
         Hospital h = new Hospital();
         Scanner sc = new Scanner(System.in);
-        Medico[] medico=new Medico[100];
+        Medico[] medico = new Medico[100];
         int inicio;
-
         do {
 
             inicio = menuIngreso(h);
@@ -180,9 +113,8 @@ ublic class SistemaHospitalario {
                         o[i] = new Oficina(i, p[i / 5]);
                     }
                     int k = o.length;
-                    Medico[] m = null;
+                    Medico[] m;
                     m = new Medico[h.getCapacidad() / 3];
-
                     int j = 0;
                     for (int i = 0; i < (h.getCapacidad() / 3); i++) {
                         m[i] = new Medico(o[i]);
@@ -190,7 +122,6 @@ ublic class SistemaHospitalario {
                     }
                     Paciente[] pa;
                     pa = new Paciente[2 * j];
-
                     do {
 
                         usuario = menu();
@@ -207,99 +138,54 @@ ublic class SistemaHospitalario {
                                     fun = menuOpciones();
                                     switch (fun) {
                                         case 1:
-                                            /* String nombrem = "Sin nombre";
-                                            int esp = 0;
-                                            System.out.println("holaa");
-                                            
-                                            ingresarMedico(nombrem, esp,  h, f, o, m, auxm);
-                                            
-                                            System.out.println(m[1].getNombre());*/
                                             System.out.print("Ingrese el nombre del medico: ");
-
                                             String nombrem = sc.nextLine();
-
+                                            String auxnom1 = nombrem.toUpperCase();
+                                            nombrem = auxnom1;
                                             System.out.println("¿Cuál es la especialidad del médico " + nombrem + "?");
-
                                             System.out.println("1. General");
-
                                             System.out.println("2. Medico Quirurgico");
-
                                             System.out.println("3. Cirugia");
-
                                             System.out.println("4. Laboratorio");
-
                                             int esp = sc.nextInt();
-
                                             sc.nextLine();
-
                                             System.out.println("Por favor, asigne una oficina al medico " + nombrem);
-
                                             switch (esp) {
-
                                                 case 1:
-
                                                     for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-
                                                         if (o[i].getTipo().equals("Consultorio") && o[i].getEstado() == 0) {
-
                                                             System.out.println(i + ". " + o[i].getNumero());
-
                                                         }
-
                                                     }
-
                                                 case 2:
-
                                                     for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-
                                                         if (o[i].getTipo().equals("Quirófano") && o[i].getEstado() == 0) {
-
                                                             System.out.println(i + ". " + o[i].getNumero());
-
                                                         }
-
                                                     }
-
                                                 case 3:
-
                                                     for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-
                                                         if (o[i].getTipo().equals("Quirofano") && o[i].getEstado() == 0) {
-
                                                             System.out.println(i + ". " + o[i].getNumero());
-
                                                         }
-
                                                     }
-
                                                 case 4:
-
                                                     for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-
                                                         if (o[i].getTipo().equals("Laboratorio") && o[i].getEstado() == 0) {
-
                                                             System.out.println(i + ". " + o[i].getNumero());
-
                                                         }
-
                                                     }
-
                                             }
-
                                             int ofi = sc.nextInt();
-
                                             sc.nextLine();
-
-                                            medico[auxm] = f.registrarMedico(o[ofi], nombrem, esp,auxm);
-                                           
+                                            m[auxm] = f.registrarMedico(o[ofi], nombrem, esp, ci);
                                             auxm++;
-
                                             break;
-
                                         case 2:
-
                                             System.out.print("Ingrese el nombre del paciente: ");
                                             String nombre = sc.nextLine();
+                                            String auxnom2 = nombre.toUpperCase();
+                                            nombre = auxnom2;
                                             System.out.println("Ingrese el estado del paciente " + nombre);
                                             System.out.println("1. Leve");
                                             System.out.println("2. Grave");
@@ -351,34 +237,139 @@ ublic class SistemaHospitalario {
                                                 sc.nextLine();
                                                 System.out.println("" + hab[0].getEstado());
                                             }
-                                            pa[aux] = f.registrarPaciente(nombre, estado, m[med], hab[habi]);
+                                            pa[aux] = f.registrarPaciente(nombre, estado, m[med], hab[habi], ci);
                                             aux++;
                                             break;
                                     }
-
                                 } while (fun != 6);
 
                                 break;
                             case 2:
-                                //opcionMedico(h, m);
+                                System.out.println("Usted eligio medico");
+
+                                System.out.println("Ingrese su cedula:");
+                                String auxce = null;
+
+                                for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                                    if (auxce.equals(m[1].getCedula())) {
+                                        System.out.println("¡Inicio de sesion exitoso!");
+                                        System.out.println("¿Qué desea hacer?");
+                                        System.out.println("1. Consultar lista de pacientes");
+                                        System.out.println("2. Atender paciente");
+
+                                        int aux6 = 0;
+
+                                        aux6 = sc.nextInt();
+                                        switch (aux6) {
+                                            case 1:
+                                                for (int cont1 = 0; cont1 <= p.length; cont1++) {
+                                                    System.out.println(p[cont1].toString());
+                                                }
+                                            case 2:
+                                                System.out.println("cual de los siguientes pacientes debe atender");
+                                                listapacientes(pa);
+                                                int numpa = sc.nextInt();
+                                                System.out.println("Que es lo que desea hacer?");
+
+                                                System.out.println("1.-Ingresar la receta");
+                                                System.out.println("2.- cambiar estado del paciente");
+                                                System.out.println("3.- ingresar la receta y cambiar el estado del paciente");
+
+                                                int aux7 = sc.nextInt();
+                                                switch (aux7) {
+                                                    case 1:
+                                                        System.out.println("ingrese cuantos medicamentos le va a recetar");
+                                                        int cont4=sc.nextInt();
+                                                        String medicamentos=null;
+                                                        System.out.println("ingrese el medicamento recetado");
+                                                        medicamentos=sc.nextLine();
+                                                        pa[numpa].getReceta().setMedicamento(medicamentos);
+                                                        System.out.println("Ingrese la concentracion en mg del medicamento");
+                                                        int concentracion=sc.nextInt();
+                                                        pa[numpa].getReceta().setConcentracion(concentracion);
+                                                    case 2:
+                                                        System.out.println("Elija una opcion");
+                                                     listaestados();
+                                                     int cont6=sc.nextInt();
+                                                     switch ( cont6){
+                                                         case 1:
+                                                             pa[numpa].setEstado(1);
+                                                             break;
+                                                         case 2:
+                                                             pa[numpa].setEstado(2);
+                                                            break;
+                                                         case 3:
+                                                             pa[numpa].setEstado(3);
+                                                             break;
+                                                         case 4:
+                                                             pa[numpa].setEstado(4);
+                                                             break;
+                                                     }
+                                                    case 3:
+                                                        
+                                                     System.out.println("ingrese cuantos medicamentos le va a recetar");
+                                                        int cont9=sc.nextInt();
+                                                        String medicamentos1=null;
+                                                        System.out.println("ingrese el medicamento recetado");
+                                                        medicamentos1=sc.nextLine();
+                                                        pa[numpa].getReceta().setMedicamento(medicamentos1);
+                                                        System.out.println("Ingrese la concentracion en mg del medicamento");
+                                                        int concentracion1=sc.nextInt();
+                                                        pa[numpa].getReceta().setConcentracion(concentracion1);
+                                                        System.out.println("Elija una opcion");
+                                                     listaestados();
+                                                     int cont10=sc.nextInt();
+                                                     switch ( cont10){
+                                                         case 1:
+                                                             pa[numpa].setEstado(1);
+                                                             break;
+                                                         case 2:
+                                                             pa[numpa].setEstado(2);
+                                                            break;
+                                                         case 3:
+                                                             pa[numpa].setEstado(3);
+                                                             break;
+                                                         case 4:
+                                                             pa[numpa].setEstado(4);
+                                                             break;
+                                                     }
+                                                    
+                                                }
+                                        }
+
+                                    }
+                                }
                                 break;
                             case 3:
                                 System.out.println("Usted eligio paciente");
+
                                 break;
                         }
                     } while (usuario != 4);
                     break;
                 case 2:
-                    ingresoHospital(h);
+                    System.out.print("Ingrese el nombre del hospital: ");
+                    String nombreh = sc.nextLine();
+                    System.out.print("Ingrese la calificación del " + nombreh + ": ");
+                    String calificacion = sc.nextLine();
+                    System.out.print("Ingrese la capacidad del " + nombreh + ": ");
+                    int capacidadh = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Ingrese la calle principal del " + nombreh + ": ");
+                    String principal = sc.nextLine();
+                    System.out.print("Ingrese la calle secundaria del " + nombreh + ": ");
+                    String secundaria = sc.nextLine();
+                    System.out.print("Ingrese el numero de calle del " + nombreh + ": ");
+                    String numero = sc.nextLine();
+                    h.setHospital(nombreh, calificacion, capacidadh, principal, secundaria, numero);
+                    System.out.println(h.getNombre() + " ingresado con exito");
                     break;
                 case 3:
                     System.out.println("Gracias por usar nuestro servicio");
 
                     break;
             }
-            System.out.println(medico[1].getNombre());
-          
+
         } while (inicio != 3);
     }
-
 }
