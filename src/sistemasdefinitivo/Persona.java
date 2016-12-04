@@ -11,6 +11,16 @@ package sistemasdefinitivo;
  */
 public class Persona {
     String nombre;
+    String cedula;
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+    
 
     public Persona(String nombre) {
         this.nombre = nombre;
