@@ -79,6 +79,30 @@ import java.util.Scanner;
             
                
     }
+    public static boolean verificarPaciente( String cedula, Paciente p[]){
+        boolean aux;
+        aux=false;
+        for( int i=0; i<=p.length; i++){
+            if(p[i].getCedula().equals(cedula)){
+                aux= true;
+            }
+            
+            
+        }
+        return aux;
+    }
+    public static  int buscarnumeropaciente(Paciente p[], String cedula ){
+            int n=0;
+        for( int i=0; i<=p.length; i++){
+            if ( p[i].getCedula().equals(cedula)){
+                n=i;
+                
+            }
+    
+            
+        }
+        return n;
+    }
 
     /**
      * @param args the command line arguments
@@ -342,6 +366,20 @@ import java.util.Scanner;
                                 break;
                             case 3:
                                 System.out.println("Usted eligio paciente");
+                                System.out.println("Ingrese su cedula");
+                                
+                                String cedula2=sc.nextLine();
+                                if(verificarPaciente(cedula2, pa)){
+                                    System.out.println("Usuario encontrado");
+                                    System.out.println("Su datos son los siguiente");
+                                    int numpaciente=buscarnumeropaciente(pa, cedula2 );
+                                    System.out.println(pa[numpaciente].toString());
+                                    
+                                    
+                                    
+                                }
+                                
+                              
 
                                 break;
                         }
