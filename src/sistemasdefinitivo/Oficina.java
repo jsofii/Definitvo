@@ -11,7 +11,16 @@ package sistemasdefinitivo;
  */
 public class Oficina extends Cuarto{
     private int tipo;
+    private String tipoOfi;
     private int estado;
+
+    public String getTipoOfi() {
+        return tipoOfi;
+    }
+
+    public void setTipoOfi(String tipoOfi) {
+        this.tipoOfi = tipoOfi;
+    }
 
     public int getEstado() {
         return estado;

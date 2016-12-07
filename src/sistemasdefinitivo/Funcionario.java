@@ -53,22 +53,27 @@ public class Funcionario extends Persona {
     public Medico registrarMedico(Oficina oficina, String nombre, int especialidad, String cedula) {
         Medico medico = new Medico();
         medico.setNombre(nombre);
+        medico.setEstado(0);
         switch (especialidad) {
             case 1:
                 medico.setEspecialidad("General");
+                //medico.getOficina().getPiso().setNumero(1);
                 break;
             case 2:
                 medico.setEspecialidad("Medico Quirurgico");
+                //medico.getOficina().getPiso().setNumero(2);
                 break;
             case 3:
                 medico.setEspecialidad("Cirugia");
+                //medico.getOficina().getPiso().setNumero(3);
                 break;
             case 4:
                 medico.setEspecialidad("Laboratorio");
+                //medico.getOficina().getPiso().setNumero(4);
                 break;
         }
         medico.setOficina(oficina);
-        oficina.setEstado(1);
+        //oficina.setEstado(1);
         medico.setCedula(cedula);
         return medico;
     }
@@ -83,11 +88,14 @@ public class Funcionario extends Persona {
                 java.util.Date fecha = new Date();
                 Turno turno = new Turno(1000, fecha);
                 paciente.setTurno(turno);
+                paciente.setDiagnostico("Crítico");
+                
                 break;
             case 2:
                 java.util.Date fecha1 = new Date();
                 Turno turno1 = new Turno(100, fecha1);
                 paciente.setTurno(turno1);
+                paciente.setDiagnostico("Grave");
                 break;
             case 1:
                 System.out.println("Ingrese la fecha para el turno");
@@ -99,6 +107,7 @@ public class Funcionario extends Persona {
                 int año = sc.nextInt();
                 Turno turno2 = new Turno(dia, mes, año);
                 paciente.setTurno(turno2);
+                paciente.setDiagnostico("Leve");
                 break;
         }
         paciente.setMedico(medico);

@@ -56,7 +56,7 @@ public class Hospital {
     
     public Hospital(){
         this.nombre="\n-HOSPITAL DE LA ESCUELA POLITÉCNICA NACIONAL-";
-        this.capacidad=30;
+        this.capacidad=150;
         this.calificacion="A+";
         this.direccion=new Direccion();
     }

@@ -5,6 +5,7 @@
  */
 package sistemasdefinitivo;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
@@ -23,7 +24,11 @@ public class SistemasDefinitivo {
         System.out.println("3. Salir");
         System.out.println("Encuentrenos en: " + h.getDireccion().toString());
         int menu = 0;
+        try{
         menu = sc.nextInt();
+        }catch (InputMismatchException a ){
+            System.out.println("ingrese una opción valida");
+        }
         return menu;
 
     }
@@ -35,12 +40,23 @@ public class SistemasDefinitivo {
         System.out.println("2. Medico");
         System.out.println("3. Paciente");
         System.out.println("4. Atras");
-        int usuario;
-        usuario = sc.nextInt();
-        sc.nextLine();
+        int usuario=0;
+         boolean b=true;
+        while (b){
+        try{
+            usuario=sc.nextInt();
+            b=false;
+        }catch(InputMismatchException e){
+            System.out.println("ingrese la edad en numeros");
+           
+              
+            b=true;
+     
+        }
+        }
+      
         return usuario;
     }
-
     public static int menuOpciones() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Usuario ingresado con exito");
@@ -56,10 +72,25 @@ public class SistemasDefinitivo {
 
     }
 
-    public static void listamedicos(Medico m[]) {
-        for (int i = 0; i < m.length; i++) {
-            System.out.println(i + ".-" + m[i].toString());
-            System.out.println("\n");
+    public static void listamedicos(Medico m[], int auxm) {
+        Scanner sc = new Scanner(System.in);
+        for (int i = 0; i < auxm; i++) {
+            System.out.println(i + ".- \tNombre:" + m[i].getNombre());
+            System.out.println("\t\tOficina asignada:");
+            System.out.println("\t\t\tTipo" + m[i].getOficina().getTipoOfi());
+            System.out.println("\t\t\tNumero:" + m[i].getOficina().getNumero());
+            System.out.println("\t\t\tPiso:" + m[i].getOficina().getPiso().getNumero());
+            System.out.println("\t\t\tEstado: \n\t\t\tOcupado:1\n\t\tLibre:0");
+            int estado = m[i].getEstado();
+            switch (estado) {
+                case 1:
+                    System.out.println("\t\t\t El medico esta ocupado");
+                    break;
+                case 0:
+                    System.out.println("\t\t\t El medico esta libre");
+                    break;
+            }
+
         }
     }
 
@@ -102,31 +133,55 @@ public class SistemasDefinitivo {
         return n;
     }
 
+    public static void listaOficinas(int cont, Oficina o[], Medico m[], int auxm) {
+        switch (cont) {
+            case 1:
+                for (int i = 0; i < 10; i++) {
+                    System.out.println(i + ".-10" + i);
+                }
+                m[auxm].getOficina().setTipoOfi("consultorio");
+
+                break;
+            case 2:
+                for (int i = 10; i < 20; i++) {
+                    System.out.println(i + ".-20" + i);
+                }
+                m[auxm].getOficina().setTipoOfi("Quirófano");
+                break;
+            case 3:
+                for (int i = 20; i < 30; i++) {
+                    System.out.println(i + ".-30" + i);
+
+                }
+                m[auxm].getOficina().setTipoOfi("Quirófano");
+                break;
+            case 4:
+                for (int i = 30; i < 40; i++) {
+                    System.out.println("1.-40");
+                }
+                m[auxm].getOficina().setTipoOfi("Laboratorio");
+        }
+
+    }
+
     public static void listapaciente(Paciente pa[], int aux) {
         for (int i = 0; i < aux; i++) {
 
-            System.out.println("Nombre:" + pa[i].getNombre());
-            System.out.println("Cedula:" + pa[i].getCedula());
-            System.out.println("Diagnostico:" + pa[i].getDiagnostico());
-            System.out.println("Receta");
-            System.out.println("\tMedicamento:" + pa[i].getReceta().getMedicamento());
-            System.out.println("\tConcentracion:" + pa[i].getReceta().getConcentracion());
-            System.out.println("Habitacion:");
-            System.out.println("\tNúmero:" + pa[i].getHabitacion().getNumero());
-            System.out.println("\tPiso" + pa[i].getHabitacion().getPiso().getNumero());
-            System.out.println("Médico asignado:");
-            System.out.println("\t Especialidad:" + pa[i].getMedico().getEspecialidad());
+            System.out.println("1.-\t" + "\tNombre:" + pa[i].getNombre());
+            System.out.println("\t\tCedula:" + pa[i].getCedula());
+            System.out.println("\t\tDiagnostico:" + pa[i].getDiagnostico());
+            System.out.println("\t\tReceta");
+            System.out.println("\t\t\tMedicamento:" + pa[i].getReceta().getMedicamento());
+            System.out.println("\t\t\tConcentracion:" + pa[i].getReceta().getConcentracion());
+            System.out.println("\t\tHabitacion:");
+            System.out.println("\t\t\tNúmero:" + pa[i].getMedico().getOficina().getNumero());
+            System.out.println("\t\t\tPiso" + pa[i].getHabitacion().getPiso().getNumero());
+            System.out.println("\t\tMédico asignado:");
+            System.out.println("\t\t\tNombre:" + pa[i].getMedico().getNombre());
+            System.out.println("\t\t\t Especialidad:" + pa[i].getMedico().getEspecialidad());
 
             System.out.println("Consultorio:" + pa[i].getMedico().getOficina().getNumero());
 
-        }
-    }
-
-    public static void listamedicos(Medico m[], int auxm) {
-        for (int i = 0; i < auxm; i++) {
-
-            System.out.println(m[i].toString());
-            System.out.println(m[i].getOficina().getNumero());
         }
     }
 
@@ -160,11 +215,13 @@ public class SistemasDefinitivo {
                     Habitacion[] hab;
                     hab = new Habitacion[h.getCapacidad() / 3];
                     Oficina[] o;
-                    o = new Oficina[h.getCapacidad() / 3];
-                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
+                    o = new Oficina[100];
+                    
+                    for (int i = 0; i < (h.getCapacidad()  /3); i++) {
                         hab[i] = new Habitacion(i, p[i / 5]);
                         o[i] = new Oficina(i, p[i / 5]);
                     }
+                   
                     int k = o.length;
                     Medico[] m;
                     m = new Medico[h.getCapacidad() / 3];
@@ -207,36 +264,54 @@ public class SistemasDefinitivo {
                                             System.out.println("3. Cirugia");
                                             System.out.println("4. Laboratorio");
                                             int esp = sc.nextInt();
-                                            sc.nextLine();
+                                           
                                             System.out.println("Por favor, asigne una oficina al medico " + nombrem);
+                                             sc.nextLine();
+                                           
                                             switch (esp) {
                                                 case 1:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Consultorio") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
+                                                    for ( int i = 0; i < 10; i++) {
+                                                        if(o[i].getEstado()!=1){
+                                                        System.out.println(i + ".-10" + i);
                                                         }
                                                     }
+                                                    m[auxm].getOficina().setTipoOfi("consultorio");
+
+                                                    break;
                                                 case 2:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Quirófano") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
+                                                    for ( int i = 10; i < 20 ; i++) {
+                                                        if(o[i].getEstado()!=1){
+                                                      
+                                                        System.out.println(i + ".-20" + i);
                                                         }
                                                     }
+                                                    m[auxm].getOficina().setTipoOfi("Quirófano");
+                                                    break;
                                                 case 3:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Quirofano") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
+                                                    for ( int i = 20; i < 30; i++) {
+                                                          if(o[i].getEstado()!=1){
+                                                        System.out.println(i + ".-30" + i);
+                                                          }
                                                     }
+                                                    m[auxm].getOficina().setTipoOfi("Quirófano");
+                                                    break;
                                                 case 4:
-                                                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
-                                                        if (o[i].getTipo().equals("Laboratorio") && o[i].getEstado() == 0) {
-                                                            System.out.println(i + ". " + o[i].getNumero());
-                                                        }
+                                                    for ( int i = 30; i < 40 ;i++){
+                                                          if(o[i].getEstado()!=1){
+                                                        System.out.println(i+"-40"+i);
+                                                          }
                                                     }
+                                                    m[auxm].getOficina().setTipoOfi("Laboratorio");
+                                                    
                                             }
+                                         
+                                            //listaOficinas(esp, o, m, auxm);
+                                            
+                                            
                                             int ofi = sc.nextInt();
+                                            o[ofi].setEstado(1);
                                             sc.nextLine();
+
                                             m[auxm] = f.registrarMedico(o[ofi], nombrem, esp, cedulaMedico);
                                             auxm++;
                                             break;
@@ -350,15 +425,13 @@ public class SistemasDefinitivo {
                                                 switch (aux7) {
                                                     case 1:
                                                         System.out.println("ingrese el medicamento");
-                                                        String aaaa=sc.nextLine();
+                                                        String aaaa = sc.nextLine();
                                                         System.out.println(aaaa);
 
-                                                      
-
                                                         System.out.println("Ingrese la concentracion en mg del medicamento");
-                                                        
+
                                                         int concentracion = sc.nextInt();
-                                                     
+
                                                         pa[numpa].getReceta().setConcentracion(concentracion);
                                                         break;
                                                     case 2:
