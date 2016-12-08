@@ -95,6 +95,13 @@ public class SistemasDefinitivo {
         }
     }
 
+    public static void listapacientes(Paciente p[]) {
+        for (int i = 0; i < p.length; i++) {
+            System.out.println(i + ".-" + p[i].toString());
+            System.out.println("\n");
+        }
+    }
+
     public static void listaestados() {
         System.out.println("1.-sano");
         System.out.println("2.- leve");
@@ -188,6 +195,8 @@ public class SistemasDefinitivo {
         Hospital h = new Hospital();
         Scanner sc = new Scanner(System.in);
 
+        System.out.println("holaaa");
+
         int inicio;
         do {
 
@@ -222,7 +231,6 @@ public class SistemasDefinitivo {
                         m[i] = new Medico(o[i]);
                         j++;
                     }
-
                     Paciente[] pa;
                     pa = new Paciente[2 * j];
                     for (int ñ = 0; ñ < (2 * j); ñ++) {
@@ -261,44 +269,35 @@ public class SistemasDefinitivo {
                                             System.out.println("Por favor, asigne una oficina al medico " + nombrem);
                                             sc.nextLine();
 
+                                            //listaOficinas(esp, o, m, auxm);
+
                                             switch (esp) {
                                                 case 1:
                                                     for (int i = 0; i < 10; i++) {
-                                                        if (o[i].getEstado() != 1) {
-                                                            System.out.println(i + ".-10" + i);
-                                                        }
+                                                        System.out.println(i + ".-10" + i);
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("consultorio");
 
                                                     break;
                                                 case 2:
                                                     for (int i = 10; i < 20; i++) {
-                                                        if (o[i].getEstado() != 1) {
-
-                                                            System.out.println(i + ".-20" + i);
-                                                        }
+                                                        System.out.println(i + ".-20" + i);
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Quirófano");
                                                     break;
                                                 case 3:
                                                     for (int i = 20; i < 30; i++) {
-                                                        if (o[i].getEstado() != 1) {
-                                                            System.out.println(i + ".-30" + i);
-                                                        }
+                                                        System.out.println(i + ".-30" + i);
+
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Quirófano");
                                                     break;
                                                 case 4:
                                                     for (int i = 30; i < 40; i++) {
-                                                        if (o[i].getEstado() != 1) {
-                                                            System.out.println(i + "-40" + i);
-                                                        }
+                                                        System.out.println("1.-40"+i);
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Laboratorio");
-
                                             }
-
-                                            //listaOficinas(esp, o, m, auxm);
                                             int ofi = sc.nextInt();
                                             o[ofi].setEstado(1);
                                             sc.nextLine();
@@ -327,7 +326,6 @@ public class SistemasDefinitivo {
                                                         if ((m[i].getEspecialidad().equalsIgnoreCase("General")) && (m[i].getEstado() == 0)) {
                                                             System.out.println(i + ". " + m[i].getNombre());
                                                         }
-
                                                     }
                                                     System.out.println("El paciente puede seguir a la sala de espera");
                                                     break;
