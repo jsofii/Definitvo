@@ -63,5 +63,8 @@ public class Medico extends Persona {
     public Medico(){
         this.estado=0;
     }
+
+   
+    
 }
 

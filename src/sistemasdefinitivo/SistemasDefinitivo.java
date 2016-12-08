@@ -24,10 +24,10 @@ public class SistemasDefinitivo {
         System.out.println("3. Salir");
         System.out.println("Encuentrenos en: " + h.getDireccion().toString());
         int menu = 0;
-        
-        try{
-        menu = sc.nextInt();
-        }catch (InputMismatchException a ){
+
+        try {
+            menu = sc.nextInt();
+        } catch (InputMismatchException a) {
             System.out.println("ingrese una opción valida");
         }
         return menu;
@@ -41,23 +41,23 @@ public class SistemasDefinitivo {
         System.out.println("2. Medico");
         System.out.println("3. Paciente");
         System.out.println("4. Atras");
-        int usuario=0;
-         boolean b=true;
-        while (b){
-        try{
-            usuario=sc.nextInt();
-            b=false;
-        }catch(InputMismatchException e){
-            System.out.println("ingrese la edad en numeros");
-           
-              
-            b=true;
-     
+        int usuario = 0;
+        boolean b = true;
+        while (b) {
+            try {
+                usuario = sc.nextInt();
+                b = false;
+            } catch (InputMismatchException e) {
+                System.out.println("ingrese la edad en numeros");
+
+                b = true;
+
+            }
         }
-        }
-      
+
         return usuario;
     }
+
     public static int menuOpciones() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Usuario ingresado con exito");
@@ -92,13 +92,6 @@ public class SistemasDefinitivo {
                     break;
             }
 
-        }
-    }
-
-    public static void listapacientes(Paciente p[]) {
-        for (int i = 0; i < p.length; i++) {
-            System.out.println(i + ".-" + p[i].toString());
-            System.out.println("\n");
         }
     }
 
@@ -195,8 +188,6 @@ public class SistemasDefinitivo {
         Hospital h = new Hospital();
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("holaaa");
-
         int inicio;
         do {
 
@@ -217,12 +208,12 @@ public class SistemasDefinitivo {
                     hab = new Habitacion[h.getCapacidad() / 3];
                     Oficina[] o;
                     o = new Oficina[100];
-                    
-                    for (int i = 0; i < (h.getCapacidad()  /3); i++) {
+
+                    for (int i = 0; i < (h.getCapacidad() / 3); i++) {
                         hab[i] = new Habitacion(i, p[i / 5]);
                         o[i] = new Oficina(i, p[i / 5]);
                     }
-                   
+
                     int k = o.length;
                     Medico[] m;
                     m = new Medico[h.getCapacidad() / 3];
@@ -231,6 +222,7 @@ public class SistemasDefinitivo {
                         m[i] = new Medico(o[i]);
                         j++;
                     }
+
                     Paciente[] pa;
                     pa = new Paciente[2 * j];
                     for (int ñ = 0; ñ < (2 * j); ñ++) {
@@ -265,50 +257,48 @@ public class SistemasDefinitivo {
                                             System.out.println("3. Cirugia");
                                             System.out.println("4. Laboratorio");
                                             int esp = sc.nextInt();
-                                           
+
                                             System.out.println("Por favor, asigne una oficina al medico " + nombrem);
-                                             sc.nextLine();
-                                           
+                                            sc.nextLine();
+
                                             switch (esp) {
                                                 case 1:
-                                                    for ( int i = 0; i < 10; i++) {
-                                                        if(o[i].getEstado()!=1){
-                                                        System.out.println(i + ".-10" + i);
+                                                    for (int i = 0; i < 10; i++) {
+                                                        if (o[i].getEstado() != 1) {
+                                                            System.out.println(i + ".-10" + i);
                                                         }
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("consultorio");
 
                                                     break;
                                                 case 2:
-                                                    for ( int i = 10; i < 20 ; i++) {
-                                                        if(o[i].getEstado()!=1){
-                                                      
-                                                        System.out.println(i + ".-20" + i);
+                                                    for (int i = 10; i < 20; i++) {
+                                                        if (o[i].getEstado() != 1) {
+
+                                                            System.out.println(i + ".-20" + i);
                                                         }
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Quirófano");
                                                     break;
                                                 case 3:
-                                                    for ( int i = 20; i < 30; i++) {
-                                                          if(o[i].getEstado()!=1){
-                                                        System.out.println(i + ".-30" + i);
-                                                          }
+                                                    for (int i = 20; i < 30; i++) {
+                                                        if (o[i].getEstado() != 1) {
+                                                            System.out.println(i + ".-30" + i);
+                                                        }
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Quirófano");
                                                     break;
                                                 case 4:
-                                                    for ( int i = 30; i < 40 ;i++){
-                                                          if(o[i].getEstado()!=1){
-                                                        System.out.println(i+"-40"+i);
-                                                          }
+                                                    for (int i = 30; i < 40; i++) {
+                                                        if (o[i].getEstado() != 1) {
+                                                            System.out.println(i + "-40" + i);
+                                                        }
                                                     }
                                                     m[auxm].getOficina().setTipoOfi("Laboratorio");
-                                                    
+
                                             }
-                                         
+
                                             //listaOficinas(esp, o, m, auxm);
-                                            
-                                            
                                             int ofi = sc.nextInt();
                                             o[ofi].setEstado(1);
                                             sc.nextLine();
@@ -337,6 +327,7 @@ public class SistemasDefinitivo {
                                                         if ((m[i].getEspecialidad().equalsIgnoreCase("General")) && (m[i].getEstado() == 0)) {
                                                             System.out.println(i + ". " + m[i].getNombre());
                                                         }
+
                                                     }
                                                     System.out.println("El paciente puede seguir a la sala de espera");
                                                     break;

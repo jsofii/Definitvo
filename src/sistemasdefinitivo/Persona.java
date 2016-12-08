@@ -36,7 +36,7 @@ public class Persona {
     }
     
     public Persona(){
-        this.nombre="";
+        this.nombre="Usuario no registrado";
 }
     
 }
