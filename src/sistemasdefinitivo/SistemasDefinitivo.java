@@ -24,6 +24,7 @@ public class SistemasDefinitivo {
         System.out.println("3. Salir");
         System.out.println("Encuentrenos en: " + h.getDireccion().toString());
         int menu = 0;
+        
         try{
         menu = sc.nextInt();
         }catch (InputMismatchException a ){
